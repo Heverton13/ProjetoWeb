@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ufrn.dao.bean;
+package com.ufrn.bean;
 
 
 import com.ufrn.dao.implementations.LoginDaoImpl;
@@ -56,12 +56,14 @@ public class ControllerUsuarios {
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
         
+        this.login.setAdmin(true);
+        
         responsavelDAO.save(responsavel);
         logindao.save(login);
 
         sessao.close();
         
-        return "/Login.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
         
     }
 
