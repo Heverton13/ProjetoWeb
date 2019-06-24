@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>SIGA - Sistema Intgrado para Gerencia de Amostras</title>
+    </h:head>
+    <h:body>
+        
+        <center>
+        <h3>Realize Login no Sistema </h3>
+        
+        <h:form>
+            
+            Login: <p:inputText  /><br/><br/>
+            Senha: <p:password  /><br/><br/>
+            <p:commandButton value="ENTRAR" /><br/>
+            
+            <br/>
+            <p:outputLabel>Não é cadastrado, Acesse:</p:outputLabel><br/>
+            <p:commandLink action="cadastrosolicitante.xhtml" value="Clique aqui, Para Solicitante!" ></p:commandLink><br/>
+            <p:commandLink action="cadastroresponsavel.xhtml" value="Clique aqui, Para Responsavel!" ></p:commandLink><br/>
+        </h:form>
+        </center>
+    </h:body>
+</html>
+
