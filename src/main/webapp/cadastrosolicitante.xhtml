@@ -8,8 +8,23 @@
     </h:head>
     <h:body>
         
+        
+        
         <p:outputLabel value="Realize Cadastro Abaixo"/>
-      
+        
+        <h:form>
+            Nome: <p:inputText value="#{usuario.solicitante.nome}"  /><br/><br/>
+            
+            Professor Responsavel: <p:inputText value="#{usuario.solicitante.nome_professor}"  /><br/><br/>
+            
+            Despartamento: <p:inputText value="#{usuario.solicitante.departamento}"  /><br/><br/>
+            
+            Login: <p:inputText value="#{usuario.login.username}"  /><br/><br/>
+            
+            Senha: <p:password value="#{usuario.login.senha}"  /><br/><br/>
+            
+            <p:commandButton value="CADASTRAR" action="#{usuario.cadastroSolicitante()}" /><br/>
+        </h:form>
     </h:body>
 </html>
 

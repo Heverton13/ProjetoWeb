@@ -61,10 +61,32 @@ public class ControllerUsuarios {
         responsavelDAO.save(responsavel);
         logindao.save(login);
 
+        
+        responsavel = new Responsavel();
+        login = new Login();
+        
         sessao.close();
         
         return "/index.xhtml?faces-redirect=true";
         
+    }
+    
+    public String cadastroSolicitante(){
+        
+        Session sessao = null;
+	sessao = HibernateUtil.getSessionFactory().openSession();
+        
+        this.login.setAdmin(false);
+        
+        solicitantedao.save(solicitante);
+        logindao.save(login);
+        
+        solicitante = new Solicitante();
+        login = new Login();
+        
+        sessao.close();
+        
+        return "/index.xhtml?faces-redirect=true";
     }
 
     public Responsavel getResponsavel() {
