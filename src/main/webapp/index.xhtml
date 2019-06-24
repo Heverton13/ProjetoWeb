@@ -13,14 +13,15 @@
         
         <h:form>
             
-            Login: <p:inputText  /><br/><br/>
-            Senha: <p:password  /><br/><br/>
-            <p:commandButton value="ENTRAR" /><br/>
+            Login: <p:inputText value="#{login.login}"  /><br/><br/>
+            Senha: <p:password value="#{login.senha}"  /><br/><br/>
+            <p:commandButton value="ENTRAR" action="#{login.autentica()}" /><br/>
             
             <br/>
             <p:outputLabel>Não é cadastrado, Acesse:</p:outputLabel><br/>
             <p:commandLink action="cadastrosolicitante.xhtml" value="Clique aqui, Para Solicitante!" ></p:commandLink><br/>
             <p:commandLink action="cadastroresponsavel.xhtml" value="Clique aqui, Para Responsavel!" ></p:commandLink><br/>
+        
         </h:form>
         </center>
     </h:body>

@@ -130,6 +130,12 @@ public class ControllerUsuarios {
     }
 
     public List<Login> getListalogins() {
+        Session sessao = null;
+	sessao = HibernateUtil.getSessionFactory().openSession();
+        
+        this.listalogins = (ArrayList<Login>) logindao.findAll();
+        
+        sessao.close();
         return listalogins;
     }
 
