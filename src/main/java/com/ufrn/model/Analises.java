@@ -29,6 +29,13 @@ public class Analises implements Serializable {
     
     @Column(length = 50)
     private String nome_analise;
+
+    public Analises() {
+    }
+
+    public Analises(String nome_analise) {
+        this.nome_analise = nome_analise;
+    }
     
     public Integer getId_analise() {
         return id_analise;

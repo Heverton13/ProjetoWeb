@@ -52,8 +52,17 @@ public class Amostra implements Serializable {
     @ManyToOne
     @JoinColumn(name = "respnsavel_id")
     private Responsavel responsavel;
-    
-    
+
+    public Amostra(String codigo, String descricao, int frascos, String observacoes, Date data_entrada) {
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.frascos = frascos;
+        this.observacoes = observacoes;
+        this.data_entrada = data_entrada;
+    }
+
+    public Amostra() {
+    }   
     
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "amostra_analise", joinColumns = { @JoinColumn(name = "amostra_id", 

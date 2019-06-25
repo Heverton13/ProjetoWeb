@@ -5,12 +5,15 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>SIGA - Sistema Intgrado para Gerencia de Amostras</title>
+        <h:outputStylesheet library="css" name="style.css" />
     </h:head>
     <h:body>
         
         <center>
-        <h3>Realize Login no Sistema </h3>
         
+        <header id="main-header">Laboraório Multiusuário de Nutrição Animal </header> 
+           
+        <div id="panelInput">
         <h:form>
             
             Login: <p:inputText value="#{login.login}"  /><br/><br/>
@@ -23,6 +26,7 @@
             <p:commandLink action="cadastroresponsavel.xhtml" value="Clique aqui, Para Responsavel!" ></p:commandLink><br/>
         
         </h:form>
+        </div>
         </center>
     </h:body>
 </html>
