@@ -58,7 +58,10 @@ public class ControllerUsuarios {
         
         this.login.setAdmin(true);
         
+        login.setUser(responsavel);
+        
         responsavelDAO.save(responsavel);
+
         logindao.save(login);
 
         

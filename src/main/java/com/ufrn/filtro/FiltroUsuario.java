@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Dev
  */
-@WebFilter("/user/*")
+@WebFilter("/faces/user/*")
 public class FiltroUsuario implements Filter {
     
       /**
@@ -58,7 +58,7 @@ public class FiltroUsuario implements Filter {
 		
 		if (u == null){
 			String contextPath = ((HttpServletRequest) request).getContextPath();
-			((HttpServletResponse) response).sendRedirect(contextPath + "/index.xhtml");
+			((HttpServletResponse) response).sendRedirect(contextPath + "/faces/index.xhtml");
 		} else {
 			chain.doFilter(request, response);
 		}

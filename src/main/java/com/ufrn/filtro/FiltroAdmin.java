@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Dev
  */
-@WebFilter("/admin/*")
+@WebFilter("/faces/admin/*")
 public class FiltroAdmin implements Filter {
     
       /**
@@ -57,7 +57,7 @@ public class FiltroAdmin implements Filter {
 		
 		if (u == null){
 			String contextPath = ((HttpServletRequest) request).getContextPath();
-			((HttpServletResponse) response).sendRedirect(contextPath + "/index.xhtml");
+			((HttpServletResponse) response).sendRedirect(contextPath + "/faces/index.xhtml");
 		} else {
 			chain.doFilter(request, response);
 		}

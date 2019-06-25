@@ -79,7 +79,7 @@ public class LoginBean {
 			ExternalContext ec = context.getExternalContext();
 			HttpSession s = (HttpSession) ec.getSession(true);
 			s.invalidate();
-			return "saiu";
+			return "/index.xhtml?faces-redirect=true";
 	}
 
     public ControllerUsuarios getUsuarios() {

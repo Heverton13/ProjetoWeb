@@ -6,9 +6,12 @@
 package com.ufrn.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.*;
 import net.bytebuddy.implementation.bind.annotation.Super;
+import org.hibernate.annotations.Cascade;
 
 /**
  *
@@ -17,8 +20,6 @@ import net.bytebuddy.implementation.bind.annotation.Super;
 @Entity
 @PrimaryKeyJoinColumn(name="idPessoa")
 public class Solicitante extends User implements Serializable {
-    
-
     
     @Column(length = 55)
     private String nome_professor;
@@ -31,7 +32,10 @@ public class Solicitante extends User implements Serializable {
     
     @Column(length = 60)
     private String email_solicitante;
+    
+    
 
+  
     public Solicitante() {
     }
 

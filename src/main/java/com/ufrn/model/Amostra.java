@@ -52,7 +52,7 @@ public class Amostra implements Serializable {
     @ManyToOne
     @JoinColumn(name = "respnsavel_id")
     private Responsavel responsavel;
-
+    
     public Amostra(String codigo, String descricao, int frascos, String observacoes, Date data_entrada) {
         this.codigo = codigo;
         this.descricao = descricao;

@@ -12,6 +12,16 @@
         
         <header id="main-header">Laboraório Multiusuário de Nutrição Animal
         </header> 
+        
+        <p:panel rendered="#{sessionScope['usuario-logado']!=null}">
+         
+         	<h:form>
+         	<p:outputLabel value="Bem-vindo, #{sessionScope['usuario-logado'].username}" /> <br/>
+                <h:commandButton value="Sair" action="#{login.sair()}" immediate="true"/>
+         	</h:form>
+         </p:panel>
+        
+        
 
         <nav id="menu">
             <ul>

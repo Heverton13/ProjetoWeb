@@ -6,10 +6,14 @@
 package com.ufrn.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 /**
  *
@@ -22,7 +26,7 @@ public class Responsavel extends User implements Serializable {
     
     @Column(name = "data_entrega", updatable = false)
     private Date data;
-    
+
     
     public Responsavel(String Nome){
        
