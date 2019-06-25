@@ -58,12 +58,12 @@ public class ControllerUsuarios {
         
         this.login.setAdmin(true);
         
-        login.setUser(responsavel);
-        
         responsavelDAO.save(responsavel);
 
+        login.setUser(responsavel);
+        
         logindao.save(login);
-
+        
         
         responsavel = new Responsavel();
         login = new Login();
@@ -82,6 +82,8 @@ public class ControllerUsuarios {
         this.login.setAdmin(false);
         
         solicitantedao.save(solicitante);
+        
+        login.setUser(solicitante);
         logindao.save(login);
         
         solicitante = new Solicitante();
