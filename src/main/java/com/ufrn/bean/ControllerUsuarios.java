@@ -16,8 +16,10 @@ import com.ufrn.model.*;
 import com.ufrn.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import org.hibernate.Session;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -172,5 +174,10 @@ public class ControllerUsuarios {
         this.logindao = logindao;
     }
     
+   public void showMessage() {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "","Cadastro Realizado com Sucesso");
+         
+        PrimeFaces.current().dialog().showMessageDynamic(message);
+    }
     
 }

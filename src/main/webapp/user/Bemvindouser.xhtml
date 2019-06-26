@@ -36,11 +36,33 @@
             
             <p:commandButton value="Criar Amostra" action="#{amostra.cadastroAmostra()}">
                              <f:actionListener binding="#{amostra.showMessage()}" />
+                              <f:ajax render="@form" resetValues="true"/>
             </p:commandButton><br/><br/>
-            
-        </h:form>
+        
+        <br/>
+        </h:form>    
         </div>
-            
+        
+        <h3>Adicionar Analise para amostra, #{amostra.amostra.codigo}</h3><br/>
+        
+        <div id="panelInput">
+         <h:form> 
+         <h3>Selecione as Analises para Amostra</h3>  
+         <p:selectOneMenu  value = "#{amostra.analise.nome_analise}"> 
+               <f:selectItem itemValue = "Umidade" itemLabel = "Umidade" /> 
+               <f:selectItem itemValue = "Sais Minerais" itemLabel = "Sais Minerais" /> 
+               <f:selectItem itemValue = "Proteínas" itemLabel = "Proteínas" /> 
+               <f:selectItem itemValue = "Lípidios" itemLabel = "Lípidios" /> 
+               <f:selectItem itemValue = "Gordura" itemLabel = "Gordura" />     
+            </p:selectOneMenu><br/><br/>
+            <p:commandButton value = "Incluir Analise na amostra" action="#{amostra.cadastroAmostra()}">
+                 <f:actionListener binding="#{amostra.showMessage()}" />
+            </p:commandButton>
+             
+      </h:form>    
+         </div>
+        
+      
      </ui:define>         
      </ui:composition>
 </html>

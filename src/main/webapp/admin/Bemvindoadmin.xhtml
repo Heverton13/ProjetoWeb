@@ -21,7 +21,7 @@
         
         <h:form>
             <p:fieldset legend="Lista de Amostra em Aberto">
-                <p:dataTable value="#{amostra.amostra}" var="l">
+                <p:dataTable value="#{amostra.listaamostras}" var="l">
                     <p:column headerText="ID" sortBy="#{l.codigo}">
                         <f:facet name="header">Identificação</f:facet>
                         <p:outputLabel value="#{l.codigo}"/>

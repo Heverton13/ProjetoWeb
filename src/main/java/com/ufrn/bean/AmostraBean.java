@@ -38,25 +38,26 @@ public class AmostraBean {
     Analises analise;
     String data = "1";
     
-    ArrayList<Amostra> amostras = new ArrayList<Amostra>();
+    ArrayList<Amostra> amostras = new ArrayList<>();
     
-    ArrayList<Amostra> listaamostras = new ArrayList<Amostra>();
+    List<Amostra> listaamostras = new ArrayList<>();
     List<Analises> listaanalises;
-
+    
+    IAmostraDAO amostradao = new AmostraDaoImpl();
+    IAnalisesDAO analisedao = new AnalisesDaoImpl();
+    
     public AmostraBean() {
         
         this.amostra = new Amostra();
         this.analise = new Analises();
         //this.usuario = new User();
         
-        this.listaamostras = new ArrayList<Amostra>();
-        this.listaanalises = new ArrayList<Analises>();
+        this.listaamostras = amostradao.listAll();
+        this.listaanalises = new ArrayList<>();
         
     }
     
-    IAmostraDAO amostradao = new AmostraDaoImpl();
-    IAnalisesDAO analisedao = new AnalisesDaoImpl();
-    
+  
     
     public void cadastroAmostra(){
         
@@ -66,14 +67,16 @@ public class AmostraBean {
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
         
-        //amostra.setSol(u);
-        
         amostradao.save(amostra);
         
-        amostra = new Amostra();
-       
-        sessao.close();
+        analisedao.save(analise);
+          
+        amostra.addAnalise(analise);
+        analisedao.save(analise);
+        amostradao.save(amostra);
         
+        
+        sessao.close();
         
     }
     
@@ -84,6 +87,8 @@ public class AmostraBean {
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
         
+        
+        
         analisedao.save(analise);
         
         
@@ -91,6 +96,7 @@ public class AmostraBean {
         analise = new Analises();
         
         sessao.close();
+        
         
     }
         
@@ -135,20 +141,22 @@ public class AmostraBean {
         sessao.close();
 }
 
-    public ArrayList<Amostra> listaamostras() {
+    public List<Amostra> getListaamostras() {
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
         
         this.listaamostras = (ArrayList<Amostra>) amostradao.findAll();
         
         sessao.close();
-        return listaamostras;
+        return (ArrayList<Amostra>) listaamostras;
     }
 
-    public void setListaamostras(ArrayList<Amostra> listaamostras) {
+    public void setListaamostras(List<Amostra> listaamostras) {
         this.listaamostras = listaamostras;
     }
-
+    
+    
+  
     public List<Analises> getListaanalises() {
         return listaanalises;
     }

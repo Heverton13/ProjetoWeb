@@ -29,7 +29,7 @@
             Senha: <p:password value="#{usuario.login.senha}"  /><br/><br/>
             
             <center>
-            <p:commandButton value="CADASTRAR" action="#{usuario.cadastroSolicitante()}" /><br/>
+                <p:commandButton value="CADASTRAR" action="#{usuario.cadastroSolicitante()}" actionListener="#{usuario.showMessage()}" /><br/>
             </center>
         </h:form>
         

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
         <ui:composition template = "templates/common.xhtml">	
         <ui:define name = "content">
@@ -20,7 +21,9 @@
             Senha: <p:password value="#{usuario.login.senha}"  /><br/><br/>
             
             <center>
-            <p:commandButton value="CADASTRAR" action="#{usuario.cadastraResponsavel()}" /><br/>
+            <p:commandButton value="CADASTRAR" action="#{usuario.cadastraResponsavel()}">
+                <f:actionListener binding="#{usuario.showMessage()}" />
+            </p:commandButton><br/>
             </center>
         </h:form>
         </div>    
