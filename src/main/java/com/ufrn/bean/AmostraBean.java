@@ -18,8 +18,12 @@ import com.ufrn.model.*;
 import com.ufrn.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -34,8 +38,9 @@ public class AmostraBean {
     Analises analise;
     String data = "1";
     
+    ArrayList<Amostra> amostras = new ArrayList<Amostra>();
     
-    List<Amostra> listaamostras;
+    ArrayList<Amostra> listaamostras = new ArrayList<Amostra>();
     List<Analises> listaanalises;
 
     public AmostraBean() {
@@ -55,8 +60,13 @@ public class AmostraBean {
     
     public void cadastroAmostra(){
         
+        //HttpSession s = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        //Solicitante u = (Solicitante) s.getAttribute("usuario-logado");
+        
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
+        
+        //amostra.setSol(u);
         
         amostradao.save(amostra);
         
@@ -64,23 +74,30 @@ public class AmostraBean {
        
         sessao.close();
         
+        
     }
     
     
     public void cadastroAnalise(){
         
+       
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
         
         analisedao.save(analise);
         
-        amostra.addAnalise(analise);
         
         amostra = new Amostra();
         analise = new Analises();
         
         sessao.close();
         
+    }
+        
+    public void showMessage() {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "","Cadastro Realizado com Sucesso");
+         
+        PrimeFaces.current().dialog().showMessageDynamic(message);
     }
     
     public String getData() {
@@ -106,12 +123,29 @@ public class AmostraBean {
     public void setAnalise(Analises analise) {
         this.analise = analise;
     }
+    
+    public void removerAmostra(Amostra a){
+        
+        
+        Session sessao = null;
+	sessao = HibernateUtil.getSessionFactory().openSession();
 
-    public List<Amostra> getListaamostras() {
+        amostradao.delete(a);
+
+        sessao.close();
+}
+
+    public ArrayList<Amostra> listaamostras() {
+        Session sessao = null;
+	sessao = HibernateUtil.getSessionFactory().openSession();
+        
+        this.listaamostras = (ArrayList<Amostra>) amostradao.findAll();
+        
+        sessao.close();
         return listaamostras;
     }
 
-    public void setListaamostras(List<Amostra> listaamostras) {
+    public void setListaamostras(ArrayList<Amostra> listaamostras) {
         this.listaamostras = listaamostras;
     }
 
@@ -138,5 +172,15 @@ public class AmostraBean {
     public void setAnalisedao(IAnalisesDAO analisedao) {
         this.analisedao = analisedao;
     }
+
+    public ArrayList<Amostra> getAmostras() {
+        return amostras;
+    }
+
+    public void setAmostras(ArrayList<Amostra> amostras) {
+        this.amostras = amostras;
+    }
+    
+    
     
 }

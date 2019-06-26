@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <ui:composition template = "../templates/common.xhtml">	
+    <ui:define name = "content">	
+        
+        <nav id="menu">
+            <ul>
+                <center>
+                    <li><a href="Bemvindouser.xhtml">Cadastrar</a></li>
+                    <li><a href="adicionaranalise.xhtml">Adicionar Analise</a></li>
+                    <li><a href="listausuario.xhtml">Lista de suas amostras</a></li>
+                </center>
+            </ul>
+        </nav>
+        
+        <h3>Adicionar Analise para amostra, #{amostra.amostra.codigo}</h3><br/>
+        
+        <div id="panelInput">
+         <h:form> 
+         <h3>Selecione as Analises para Amostra</h3>  
+         <p:selectOneMenu  value = "#{amostra.analise.nome_analise}"> 
+               <f:selectItem itemValue = "Umidade" itemLabel = "Umidade" /> 
+               <f:selectItem itemValue = "Sais Minerais" itemLabel = "Sais Minerais" /> 
+               <f:selectItem itemValue = "Proteínas" itemLabel = "Proteínas" /> 
+               <f:selectItem itemValue = "Lípidios" itemLabel = "Lípidios" /> 
+               <f:selectItem itemValue = "Gordura" itemLabel = "Gordura" />     
+            </p:selectOneMenu><br/><br/>
+            <p:commandButton value = "Incluir Analise na amostra" action="#{amostra.cadastroAnalise()}">
+                 <f:actionListener binding="#{amostra.showMessage()}" />
+            </p:commandButton>
+             
+      </h:form>    
+         </div>
+            
+     </ui:define>         
+     </ui:composition>
+</html>
+

@@ -12,16 +12,16 @@
         <nav id="menu">
             <ul>
                 <center>
-                    <li><a href="index.xhtml">Cadastrar</a></li>
-                    <li><a href="lista.xhtml">Ver Lista</a></li>
-                    <li><a href="../index.xhtml">Sair</a></li>
+                    <li><a href="Bemvindouser.xhtml">Cadastrar</a></li>
+                    <li><a href="adicionaranalise.xhtml">Adicionar Analise</a></li>
+                    <li><a href="listausuario.xhtml">Lista de suas amostras</a></li>
                 </center>
             </ul>
         </nav>
         
         <div id="panelInput">
         <h:form>
-            
+            <h:messages  infoStyle="color:darkgreen" errorStyle="color:darkred" />
             Identificação da Amostra: <p:inputText value="#{amostra.amostra.codigo}" /><br/><br/>
             
             Data de Entrega:  <p:inputText value="#{amostra.amostra.data_entrada}" required="true" requiredMessage="Data fora do formato dd/MM/yyyy">
@@ -34,24 +34,13 @@
 
             Observacões: <p:inputTextarea value="#{amostra.amostra.observacoes}"   /><br/><br/>
             
-            <p:commandButton value="Criar Amostra" action="#{amostra.cadastroAmostra()}" /><br/><br/>
+            <p:commandButton value="Criar Amostra" action="#{amostra.cadastroAmostra()}">
+                             <f:actionListener binding="#{amostra.showMessage()}" />
+            </p:commandButton><br/><br/>
             
         </h:form>
         </div>
             
-         <div id="panelInput">
-         <h:form> 
-         <h3>Selecione as Analises para Amostra</h3>  
-         <p:selectOneMenu  value = "#{amostra.analise.nome_analise}"> 
-               <f:selectItem itemValue = "Umidade" itemLabel = "Umidade" /> 
-               <f:selectItem itemValue = "Sais Minerais" itemLabel = "Sais Minerais" /> 
-               <f:selectItem itemValue = "Proteínas" itemLabel = "Proteínas" /> 
-               <f:selectItem itemValue = "Lípidios" itemLabel = "Lípidios" /> 
-               <f:selectItem itemValue = "Gordura" itemLabel = "Gordura" />     
-            </p:selectOneMenu><br/><br/>
-            <p:commandButton value = "Incluir Analise na amostra" action="#{amostra.cadastroAmostra()}" /> 
-      </h:form>    
-         </div>
      </ui:define>         
      </ui:composition>
 </html>
