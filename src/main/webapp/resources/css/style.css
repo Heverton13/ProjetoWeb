@@ -10,6 +10,15 @@ and open the template in the editor.
 
 /* CSS reset */
 
+.relative{
+	position:relative;
+}
+.absolute-text{
+	position:absolute; bottom:0; font-size:15px; font-family:"vedana";
+	width:100%; text-align:center;
+}
+
+
 * {
     margin: 0;
     padding: 0;

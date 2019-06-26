@@ -3,26 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Cadastre suas amostras</title>
-        <h:outputStylesheet library="css" name="style.css" />
-    </h:head>
-    <h:body>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:composition template = "../templates/common.xhtml">	
+    <ui:define name = "content">	
         
-        <header id="main-header">Laboraório Multiusuário de Nutrição Animal
-        </header> 
-        
-        <p:panel rendered="#{sessionScope['usuario-logado']!=null}">
-         
-         	<h:form>
-         	<p:outputLabel value="Bem-vindo, #{sessionScope['usuario-logado'].username}" /> <br/>
-                <h:commandButton value="Sair" action="#{login.sair()}" immediate="true"/>
-         	</h:form>
-         </p:panel>
-        
-        
-
         <nav id="menu">
             <ul>
                 <center>
@@ -66,6 +52,7 @@
             <p:commandButton value = "Incluir Analise na amostra" action="#{amostra.cadastroAmostra()}" /> 
       </h:form>    
          </div>
-    </h:body>
+     </ui:define>         
+     </ui:composition>
 </html>
 
