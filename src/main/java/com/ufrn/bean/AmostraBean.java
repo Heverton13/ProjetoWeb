@@ -60,10 +60,7 @@ public class AmostraBean {
   
     
     public void cadastroAmostra(){
-        
-        //HttpSession s = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        //Solicitante u = (Solicitante) s.getAttribute("usuario-logado");
-        
+  
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
         
@@ -77,6 +74,9 @@ public class AmostraBean {
         
         
         sessao.close();
+        
+        amostra = new Amostra();
+        analise = new Analises();
         
     }
     

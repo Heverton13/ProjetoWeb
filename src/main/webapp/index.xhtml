@@ -11,8 +11,14 @@
         <center>
         <h:form>
             
-            <p:outputLabel value="Login: " /> <p:inputText value="#{login.login}"  /><br/><br/>
-            <p:outputLabel value="Senha: " /> <p:password value="#{login.senha}"  /><br/><br/>
+            <h:graphicImage library="img" name="lab.png" width="18%"/> <br/>
+            
+            <p:messages id="messages" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            
+            <p:outputLabel value="Login  : " /> <p:inputText value="#{login.login}"/><br/><br/>
+            <p:outputLabel value="Senha: " /> <p:password value="#{login.senha}"/><br/><br/>
             <p:commandButton value="ENTRAR" action="#{login.autentica()}" /><br/>
             
             <br/>

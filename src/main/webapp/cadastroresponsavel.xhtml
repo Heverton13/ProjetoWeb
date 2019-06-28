@@ -14,11 +14,15 @@
             
         <h:form>
             
-            Nome: <p:inputText value="#{usuario.responsavel.nome}"  /><br/><br/>
+            <p:messages id="messages" closable="true">
+                <p:autoUpdate />
+            </p:messages>
             
-            Login: <p:inputText value="#{usuario.login.username}"  /><br/><br/>
+            Nome: <p:inputText value="#{usuario.responsavel.nome}" required="true" requiredMessage="Informe seu nome"/><br/><br/>
             
-            Senha: <p:password value="#{usuario.login.senha}"  /><br/><br/>
+            Login: <p:inputText value="#{usuario.login.username}" required="true" requiredMessage="Informe um login"  /><br/><br/>
+            
+            Senha: <p:password value="#{usuario.login.senha}" required="true" requiredMessage="Informe uma senha"  /><br/><br/>
             
             <center>
             <p:commandButton value="CADASTRAR" action="#{usuario.cadastraResponsavel()}">

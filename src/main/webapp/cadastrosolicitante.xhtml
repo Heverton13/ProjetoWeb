@@ -14,19 +14,25 @@
         <p:outputLabel value="Realize Cadastro Abaixo"/><br/><br/>
         
         <h:form>
-            Nome: <p:inputText value="#{usuario.solicitante.nome}"  /><br/><br/>
             
-            Email <p:inputText value="#{usuario.solicitante.email_solicitante}"  /><br/><br/>
+            <p:messages id="messages" closable="true">
+                <p:autoUpdate />
+            </p:messages>
             
-            Telefone <p:inputText value="#{usuario.solicitante.telefone}"  /><br/><br/>
+            Nome: <p:inputText id="nome" value="#{usuario.solicitante.nome}" required="true" requiredMessage="Preencha seu nome" />
+       
+            <br/><br/>
+            Email <p:inputText value="#{usuario.solicitante.email_solicitante}" required="true" requiredMessage="Preencha seu Email" /><br/><br/>
             
-            Professor Responsavel: <p:inputText value="#{usuario.solicitante.nome_professor}"  /><br/><br/>
+            Telefone <p:inputText value="#{usuario.solicitante.telefone}" maxlength="11" required="true" requiredMessage="Preencha seu telefone" /><br/><br/>
+            
+            Professor Responsavel: <p:inputText value="#{usuario.solicitante.nome_professor}" required="true" requiredMessage="Preencha o nome do seu professor" /><br/><br/>
 
-            Despartamento: <p:inputText value="#{usuario.solicitante.departamento}"  /><br/><br/>
+            Despartamento: <p:inputText value="#{usuario.solicitante.departamento}" required="true" requiredMessage="Preencha do seu Departamento"/><br/><br/>
             
-            Login: <p:inputText value="#{usuario.login.username}"  /><br/><br/>
+            Login: <p:inputText value="#{usuario.login.username}" required="true" requiredMessage="Informe um Login para acesso"/><br/><br/>
             
-            Senha: <p:password value="#{usuario.login.senha}"  /><br/><br/>
+            Senha: <p:password value="#{usuario.login.senha}" required="true" requiredMessage="Informe uma senha para acesso"/><br/><br/>
             
             <center>
                 <p:commandButton value="CADASTRAR" action="#{usuario.cadastroSolicitante()}" actionListener="#{usuario.showMessage()}" /><br/>
