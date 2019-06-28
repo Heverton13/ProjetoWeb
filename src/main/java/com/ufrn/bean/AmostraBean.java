@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -80,8 +81,14 @@ public class AmostraBean {
   
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
-        	
         
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext ec = context.getExternalContext();
+        HttpSession s = (HttpSession) ec.getSession(true);
+	Login usuario2 = (Login) s.getAttribute("usuario-logado");
+      
+        
+        amostra.setSol(usuario2);
         amostradao.save(amostra);
         
         analisedao.save(analise);

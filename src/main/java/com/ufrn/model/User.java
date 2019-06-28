@@ -24,7 +24,7 @@ public class User implements Serializable{
     
     @Column(length = 55)
     private String nome;
-    
+     
     @OneToOne(mappedBy="user"/*, orphanRemoval=true*/)
     private Login login;
 

@@ -26,9 +26,13 @@
                         <f:facet name="header">Identificação</f:facet>
                         <p:outputLabel value="#{l.codigo}"/>
                     </p:column>
+                    
                     <p:column headerText="Data" sortBy="#{l.data_entrada}">
                         <f:facet name="header">Data de Entrada</f:facet>
-                        <p:outputLabel value="#{l.data_entrada}"/>
+                        <h:outputText value="#{l.data_entrada}" >
+                                    <f:convertDateTime pattern="dd/mm/yyyy"/>
+                            </h:outputText>
+                        
                     </p:column>
 
                     <p:column headerText="Descrição">

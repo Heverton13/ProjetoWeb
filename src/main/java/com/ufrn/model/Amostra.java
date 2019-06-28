@@ -45,7 +45,7 @@ public class Amostra implements Serializable {
     //Caso 3
     @ManyToOne
     @JoinColumn(name = "solicitante_id")
-    private Solicitante sol;
+    private Login sol;
     
     // Caso 3
     
@@ -146,14 +146,22 @@ public class Amostra implements Serializable {
         this.data_entrada = data_entrada;
     }
 
-    public Solicitante getSol() {
+    public Login getSol() {
         return sol;
     }
 
-    public void setSol(Solicitante sol) {
+    public void setSol(Login sol) {
         this.sol = sol;
     }
-    
+
+    public List<Analises> getListanalises() {
+        return listanalises;
+    }
+
+    public void setListanalises(List<Analises> listanalises) {
+        this.listanalises = listanalises;
+    }
+   
 
     public Responsavel getResponsavel() {
         return responsavel;
