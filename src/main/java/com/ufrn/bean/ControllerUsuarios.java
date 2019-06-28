@@ -99,6 +99,11 @@ public class ControllerUsuarios {
     public Responsavel getResponsavel() {
         return responsavel;
     }
+    
+    public String cancelar(){
+        
+        return "/index.xhtml?faces-redirect=true";
+    }
 
     public void setResponsavel(Responsavel responsavel) {
         this.responsavel = responsavel;

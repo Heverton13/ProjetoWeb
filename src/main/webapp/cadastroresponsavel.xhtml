@@ -27,7 +27,8 @@
             <center>
             <p:commandButton value="CADASTRAR" action="#{usuario.cadastraResponsavel()}">
                 <f:actionListener binding="#{usuario.showMessage()}" />
-            </p:commandButton><br/>
+            </p:commandButton><br/><br/>
+            <p:commandButton value="CANCELAR" action="#{usuario.cancelar()}" immediate="true"  />
             </center>
         </h:form>
         </div>    
