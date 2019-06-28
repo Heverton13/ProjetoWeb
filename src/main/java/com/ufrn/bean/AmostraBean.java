@@ -5,6 +5,7 @@
  */
 package com.ufrn.bean;
 
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import com.ufrn.dao.implementations.AmostraDaoImpl;
 import com.ufrn.dao.implementations.AnalisesDaoImpl;
 import com.ufrn.dao.implementations.UserDaoImpl;
@@ -21,6 +22,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.primefaces.PrimeFaces;
@@ -38,7 +40,15 @@ public class AmostraBean {
     Analises analise;
     String data = "1";
     
-    ArrayList<Amostra> amostras = new ArrayList<>();
+    ArrayList<Amostra> fechadas;
+
+    public ArrayList<Amostra> getFechadas() {
+        return fechadas;
+    }
+
+    public void setFechadas(ArrayList<Amostra> fechadas) {
+        this.fechadas = fechadas;
+    }
     
     List<Amostra> listaamostras = new ArrayList<>();
     List<Analises> listaanalises;
@@ -52,17 +62,25 @@ public class AmostraBean {
         this.analise = new Analises();
         //this.usuario = new User();
         
+        this.fechadas = new ArrayList<>();
         this.listaamostras = amostradao.listAll();
         this.listaanalises = new ArrayList<>();
         
     }
     
-  
+    public String cancelar(){
+        
+        amostra = new Amostra();
+        analise = new Analises();     
+        
+        return "/faces/user/Bemvindouser.xhtml?faces-redirect=true";
+    }
     
-    public void cadastroAmostra(){
+    public String cadastroAmostra(){
   
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
+        	
         
         amostradao.save(amostra);
         
@@ -75,9 +93,9 @@ public class AmostraBean {
         
         sessao.close();
         
-        amostra = new Amostra();
-        analise = new Analises();
+        showMessage();
         
+        return "/faces/user/Bemvindouser.xhtml?faces-redirect=true";
     }
     
     
@@ -132,13 +150,16 @@ public class AmostraBean {
     
     public void removerAmostra(Amostra a){
         
-        
+        fechadas.add(a);
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
-
+        
+        
         amostradao.delete(a);
 
         sessao.close();
+        System.out.println(fechadas);
+ 
 }
 
     public List<Amostra> getListaamostras() {
@@ -154,8 +175,6 @@ public class AmostraBean {
     public void setListaamostras(List<Amostra> listaamostras) {
         this.listaamostras = listaamostras;
     }
-    
-    
   
     public List<Analises> getListaanalises() {
         return listaanalises;
@@ -182,11 +201,11 @@ public class AmostraBean {
     }
 
     public ArrayList<Amostra> getAmostras() {
-        return amostras;
+        return fechadas ;
     }
 
     public void setAmostras(ArrayList<Amostra> amostras) {
-        this.amostras = amostras;
+        this.fechadas = amostras;
     }
     
     

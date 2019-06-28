@@ -13,7 +13,7 @@
             <ul>
                 <center>
                     <li><a href="Bemvindoadmin.xhtml">Em abertos</a></li>
-                    <li><a href="fechadas.xhtml">Recebidos</a></li>
+                    <li><a href="adicionaranalise.xhtml">Recebidos</a></li>
                 </center>
             </ul>
         </nav>
@@ -21,7 +21,7 @@
         
         <h:form>
             <p:fieldset legend="Lista de Amostra em Aberto">
-                <p:dataTable value="#{amostra.listaamostras}" var="l">
+                <p:dataTable value="#{amostra.fechadas}" var="l">
                     <p:column headerText="ID" sortBy="#{l.codigo}">
                         <f:facet name="header">Identificação</f:facet>
                         <p:outputLabel value="#{l.codigo}"/>
@@ -47,7 +47,7 @@
                     </p:column>
                     
                     <p:column>
-                        <h:commandButton action="#{amostra.removerAmostra(l)}" value="Receber"/>
+                        <h:commandButton action="#{amostra.removerAmostra(l)}" value="Remover"/>
                     </p:column>
               
                     

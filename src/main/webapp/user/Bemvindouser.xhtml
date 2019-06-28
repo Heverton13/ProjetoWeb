@@ -13,7 +13,7 @@
             <ul>
                 <center>
                     <li><a href="Bemvindouser.xhtml">Cadastrar</a></li>
-                    <li><a href="adicionaranalise.xhtml">Adicionar Analise</a></li>
+            <!--        <li><a href="adicionaranalise.xhtml">Adicionar Analise</a></li> -->
                     <li><a href="listausuario.xhtml">Lista de suas amostras</a></li>
                 </center>
             </ul>
@@ -37,15 +37,17 @@
             
             Descricão: <p:inputTextarea value="#{amostra.amostra.descricao}" required="true" requiredMessage="Preencha a descrição"  /><br/><br/>
 
-            Frascos: <p:inputText value="#{amostra.amostra.frascos}" required="true" requiredMessage="Informe a quantidade de frascos"  /><br/><br/>
+            Frascos: <p:inputText value="#{amostra.amostra.frascos}" required="true" requiredMessage="Informe a quantidade de frascos"> 
+                <f:validateDoubleRange minimum="1" maximum="100" />
+            </p:inputText><br/><br/>
 
-            Observacões: <p:inputTextarea value="#{amostra.amostra.observacoes}"/><br/>
+            Observacões: <p:inputTextarea value="#{amostra.amostra.observacoes}"/><br/><br/>
             
             <p:commandButton value="Criar Amostra" action="#{amostra.cadastroAmostra()}" rendered="true">
                       
             </p:commandButton><br/><br/>
-               <p:commandButton value="Cancelar">
-                    <f:ajax render="@form" resetValues="true"/>
+            <p:commandButton value="Cancelar" immediate="true" action="#{amostra.cancelar()}">
+                    
            </p:commandButton><br/>
         
         <br/>
