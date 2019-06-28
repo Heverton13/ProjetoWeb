@@ -34,6 +34,14 @@
                             </h:outputText>
                         
                     </p:column>
+                    
+                    <p:column headerText="Data" sortBy="#{l.data_recebido}">
+                        <f:facet name="header">Data Recebido</f:facet>
+                        <h:outputText value="#{l.data_recebido}" >
+                                    <f:convertDateTime pattern="dd/mm/yyyy"/>
+                            </h:outputText>
+                        
+                    </p:column>
 
                     <p:column headerText="Descrição">
                         <f:facet name="header">Deescrição</f:facet>

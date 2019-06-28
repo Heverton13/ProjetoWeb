@@ -17,7 +17,9 @@ import javax.faces.bean.ManagedBean;
 
 import com.ufrn.model.*;
 import com.ufrn.util.HibernateUtil;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedProperty;
@@ -40,6 +42,7 @@ public class AmostraBean {
     Amostra amostra;
     Analises analise;
     String data = "1";
+    Date dataAtual;
     
     ArrayList<Amostra> fechadas;
 
@@ -61,6 +64,7 @@ public class AmostraBean {
         
         this.amostra = new Amostra();
         this.analise = new Analises();
+        dataAtual = new Date();
         //this.usuario = new User();
         
         this.fechadas = new ArrayList<>();
@@ -155,8 +159,13 @@ public class AmostraBean {
         this.analise = analise;
     }
     
-    public void removerAmostra(Amostra a){
+    public void buscarDataAtual(ActionEvent e) {
+        dataAtual = new Date();
+    }
+    
+    public void receberAmostra(Amostra a){
         
+        a.setData_recebido(dataAtual);
         fechadas.add(a);
         Session sessao = null;
 	sessao = HibernateUtil.getSessionFactory().openSession();
@@ -168,6 +177,17 @@ public class AmostraBean {
         System.out.println(fechadas);
  
 }
+    public void removerAmostra(Amostra a){
+        
+        Session sessao = null;
+	sessao = HibernateUtil.getSessionFactory().openSession();
+        
+        
+        amostradao.delete(a);
+
+        sessao.close();
+        
+    }
 
     public List<Amostra> getListaamostras() {
         Session sessao = null;
@@ -181,6 +201,14 @@ public class AmostraBean {
 
     public void setListaamostras(List<Amostra> listaamostras) {
         this.listaamostras = listaamostras;
+    }
+
+    public Date getDataAtual() {
+        return dataAtual;
+    }
+
+    public void setDataAtual(Date dataAtual) {
+        this.dataAtual = dataAtual;
     }
   
     public List<Analises> getListaanalises() {

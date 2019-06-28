@@ -32,8 +32,6 @@ public class Solicitante extends User implements Serializable {
     
     @Column(length = 60)
     private String email_solicitante;
-    
-    
 
   
     public Solicitante() {
@@ -77,7 +75,6 @@ public class Solicitante extends User implements Serializable {
     public void setEmail_solicitante(String email_solicitante) {
         this.email_solicitante = email_solicitante;
     }
-
 
     @Override
     public int hashCode() {

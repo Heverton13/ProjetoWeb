@@ -44,7 +44,8 @@ public class Login implements Serializable {
     @OneToOne /*(cascade = {CascadeType.ALL}, orphanRemoval = true)*/
 	@JoinColumn(name="user_id")
 	private User user;
-
+   
+    
     public Login(String username, String s) {
         this.username = username;
         this.senha = s;
@@ -86,7 +87,6 @@ public class Login implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
 
     public boolean isAdmin() {
         return admin;

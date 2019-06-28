@@ -42,16 +42,14 @@ public class Amostra implements Serializable {
     @Column(name = "data_entrada", updatable = false)
     private Date data_entrada;
     
+    @Column(name = "data_recebido", updatable = false)
+    private Date data_recebido;
+
+    
     //Caso 3
     @ManyToOne
-    @JoinColumn(name = "solicitante_id")
+    @JoinColumn(name = "login_id")
     private Login sol;
-    
-    // Caso 3
-    
-    @ManyToOne
-    @JoinColumn(name = "respnsavel_id")
-    private Responsavel responsavel;
     
     public Amostra(String codigo, String descricao, int frascos, String observacoes, Date data_entrada) {
         this.codigo = codigo;
@@ -59,6 +57,15 @@ public class Amostra implements Serializable {
         this.frascos = frascos;
         this.observacoes = observacoes;
         this.data_entrada = data_entrada;
+    }
+
+    public Amostra(String codigo, String descricao, int frascos, String observacoes, Date data_entrada, Date data_recebido) {
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.frascos = frascos;
+        this.observacoes = observacoes;
+        this.data_entrada = data_entrada;
+        this.data_recebido = data_recebido;
     }
 
     public Amostra() {
@@ -104,6 +111,14 @@ public class Amostra implements Serializable {
     
     public void setId_amostra(Integer id_amostra) {
         this.id_amostra = id_amostra;
+    }
+    
+    public Date getData_recebido() {
+        return data_recebido;
+    }
+
+    public void setData_recebido(Date data_recebido) {
+        this.data_recebido = data_recebido;
     }
 
     public String getCodigo() {
@@ -161,16 +176,6 @@ public class Amostra implements Serializable {
     public void setListanalises(List<Analises> listanalises) {
         this.listanalises = listanalises;
     }
-   
-
-    public Responsavel getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(Responsavel responsavel) {
-        this.responsavel = responsavel;
-    }
-  
     
     @Override
     public int hashCode() {
@@ -182,7 +187,7 @@ public class Amostra implements Serializable {
         hash = 59 * hash + Objects.hashCode(this.observacoes);
         hash = 59 * hash + Objects.hashCode(this.data_entrada);
         hash = 59 * hash + Objects.hashCode(this.sol);
-        hash = 59 * hash + Objects.hashCode(this.responsavel);
+        
         hash = 59 * hash + Objects.hashCode(this.listanalises);
         return hash;
     }
@@ -217,9 +222,7 @@ public class Amostra implements Serializable {
         if (!Objects.equals(this.sol, other.sol)) {
             return false;
         }
-        if (!Objects.equals(this.responsavel, other.responsavel)) {
-            return false;
-        }
+        
         if (!Objects.equals(this.listanalises, other.listanalises)) {
             return false;
         }
